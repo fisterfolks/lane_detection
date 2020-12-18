@@ -1,7 +1,6 @@
 # Functions for evaluating/visualizing the network's output
 
 - eval_iou
-- eval_forwardTime
 
 
 ## eval_iou.py 
