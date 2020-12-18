@@ -28,3 +28,4 @@ save/model_best_encoder.pth - weights of encoder
 save/model_best.pth - weights of decoder
 
 
+eval/lane_predict_visualize.ipynb - example of single prediction of detecting lanes on image from test_set
