@@ -1,26 +1,9 @@
 # Training ERFNet in Pytorch
 
-PyTorch code for training ERFNet model on Cityscapes. The code was based initially on the code from [bodokaiser/piwise](https://github.com/bodokaiser/piwise), adapted with several custom added modifications and tweaks. Some of them are:
-- Load cityscapes dataset
-- ERFNet model definition
-- Calculate IoU on each epoch during training
-- Save snapshots and best model during training
-- Save additional output files useful for checking results (see below "Output files...")
-- Resume training from checkpoint (use "--resume" flag in the command)
+Main paper of using Neural network this: Efficient ConvNet for Real-time Semantic Segmentation
+E. Romera, J.M.Alvarez, L.M.Bergasa,R.Arroyo 2017
+http://www.robesafe.uah.es/personal/eduardo.romera/pdfs/Romera17iv.pdf
 
-## Options
-For all options and defaults please see the bottom of the "main.py" file. Required ones are --savedir (name for creating a new folder with all the outputs of the training) and --datadir (path to cityscapes directory).
-
-## Example commands
-Train encoder with 150 epochs and batch=6 and then train decoder (decoder training starts after encoder training):
-```
-python main.py --savedir erfnet_training1 --datadir /home/datasets/cityscapes/ --num-epochs 150 --batch-size 6 
-```
-
-Train decoder using encoder's pretrained weights with ImageNet:
-```
-python main.py --savedir erfnet_training1 --datadir /home/datasets/cityscapes/ --num-epochs 150 --batch-size 6 --decoder --pretrainedEncoder "../trained_models/erfnet_encoder_pretrained.pth.tar"
-```
 
 ## Output files generated for each training:
 Each training will create a new folder in the "erfnet_pytorch/save/" directory named with the parameter --savedir and the following files:
@@ -40,19 +23,3 @@ NOTE: Encoder trainings have an added "_encoder" tag to each file's name.
 NEW: In previous code, IoU was calculated using a port of the cityscapes scripts, but new code has been added in "iouEval.py" to make it class-general, non-dependable on other code, and much faster (using cuda)
 
 By default, only Validation IoU is calculated for faster training (can be changed in options)
-
-## Visualization
-If you want to visualize the outputs during training add the "--visualize" flag and open an extra tab with:
-```
-python -m visdom.server -port 8097
-```
-The plots will be available using the browser in http://localhost.com:8097
-
-## Multi-GPU
-If you wish to specify which GPUs to use, use the CUDA_VISIBLE_DEVICES command:
-```
-CUDA_VISIBLE_DEVICES=0 python main.py ...
-CUDA_VISIBLE_DEVICES=0,1 python main.py ...
-```
-
-
