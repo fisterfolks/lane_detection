@@ -6,6 +6,10 @@ Dataset - TuSimple dataset can be found there: https://github.com/TuSimple/tusim
 
 train/acuracy_metric.ipynb - ipynb file with custom metric for measuring distance between line and shift
 
+This metric was created by ego-vehicle localization from paper
+On Perfomance Evaluation Metrics for Lane Estimation, R.K.Satzoda, M.M.Trivedi, 2014, ICPR.
+https://www.semanticscholar.org/paper/On-Performance-Evaluation-Metrics-for-Lane-Satzoda-Trivedi/7c72e50fd4918fa28b8024105af728965788a873
+
 
 train/main_lane.ipynb - main function for training with NUM_OF_CLASSES = 3
 
